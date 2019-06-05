@@ -4,7 +4,7 @@
   "description": "Js Blockchain from Scratch",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "block-test": "nodemon block-test.js"
   },
   "repository": {
     "type": "git",
