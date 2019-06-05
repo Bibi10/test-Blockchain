@@ -14,6 +14,11 @@ class Block {
       Data      : ${this.data}`;
   }
 
+  static genesis() {    //Calling without making instance and only use it in this block
+
+      return  new this('Genesis time', '-----', 'f1r57- h45H, []')  //This represent the class itself
+  }
+
 }
 
 module.exports  = Block;
