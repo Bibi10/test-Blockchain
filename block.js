@@ -1,3 +1,5 @@
+const SHA256 =  require('crypto-js/sha256')
+
 class Block {
   constructor( timestamp, lastHash, Hash, data) {
     this.timestamp  = timestamp;  //Bind timestamp value and bind it to timesamp property
@@ -15,15 +17,19 @@ class Block {
   }
 
   static genesis() {    //Calling without making new instance and only use with/in this block
-      return  new this('timestamp', '-----', 'f1r57-h45H', [])  //This represent the class itself
+      return new this('timestamp', '-----', 'f1r57-h45H', [])  //This represent the class itself
   }
 
   static mineBlock(lastBlock, data) {
     const timestamp = Date.now();   
     const lastHash  = lastBlock.Hash; //
-    const Hash      = 'Todo-Hash';
+    const Hash      = Block.Hash(timestamp, lastHash, data);
 
     return new this (timestamp, lastHash, Hash, data)
+  }
+
+  static Hash(timestamp, lastHash, data) {
+    return SHA256(`${timestamp} ${lastHash} ${data}`).toString();
   }
 }
 
