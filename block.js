@@ -14,11 +14,17 @@ class Block {
       Data      : ${this.data}`;
   }
 
-  static genesis() {    //Calling without making instance and only use it in this block
-
-      return  new this('Genesis time', '-----', 'f1r57- h45H, []')  //This represent the class itself
+  static genesis() {    //Calling without making new instance and only use with/in this block
+      return  new this('timestamp', '-----', 'f1r57-h45H', [])  //This represent the class itself
   }
 
+  static mineBlock(lastBlock, data) {
+    const timestamp = Date.now();   
+    const lastHash  = lastBlock.Hash; //
+    const Hash      = 'Todo-Hash';
+
+    return new this (timestamp, lastHash, Hash, data)
+  }
 }
 
 module.exports  = Block;
