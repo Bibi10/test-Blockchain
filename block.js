@@ -11,9 +11,7 @@ class Block {
       Timestamp : ${this.timestamp}
       Last Hash : ${this.lastHash.substring(0,10)}
       Hash      : ${this.Hash.substring(0,10)}
-      Data      : ${this.data};
-
-    `
+      Data      : ${this.data}`;
   }
 
 }
