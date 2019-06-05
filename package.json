@@ -4,6 +4,7 @@
   "description": "Js Blockchain from Scratch",
   "main": "index.js",
   "scripts": {
+    "test": "jest --watchAll",
     "block-test": "nodemon block-test.js"
   },
   "repository": {
@@ -18,6 +19,7 @@
   },
   "homepage": "https://github.com/scrudlabs/test-Blockchain#readme",
   "devDependencies": {
+    "jest": "^24.8.0",
     "nodemon": "^1.19.1"
   },
   "dependencies": {
