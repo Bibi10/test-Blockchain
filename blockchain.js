@@ -15,17 +15,30 @@ class Blockchain {
   isValidChain(chain) {
     if(JSON.stringify(chain[0]) !== JSON.stringify(Block.genesis())) return false;
 
-    for (let i=1; i < chain; i++){
+    for (let i=1; i < chain.length; i++){
       const block = chain[i]
-      const lastBlock = chain(i-1);
+      const lastBlock = chain[i-1];
 
       if (block.lastHash !== lastBlock.Hash || 
           block.Hash !== Block.blockHash(block)) {
-        return false;
+        return false;  
       }
     }
 
     return true;
+  }
+
+  replaceChain(newChain){
+    if(newChain.length <= this.chain.length) {
+        console.log('Received chain is no longer than the current chain.');
+      return;
+    } else if (!this.isValidChain(newChain)) {
+      console.log('Received chain is not valid.');
+      return;
+    }
+
+    console.log('Replacing blockchian with the new chain')
+    this.chain = newChain;
   }
 }
 
