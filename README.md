@@ -7,3 +7,7 @@ Js Blockchain from Scratch
 4- Build the Blockchain 
 5- Chain Validator 
 6- Test Blockchain
+7- P2p Srever 
+8- Blockchain
+9- Transaction
+10- NOde APi to interract 

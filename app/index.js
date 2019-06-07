@@ -12,8 +12,8 @@ const app = express();
 const bc = new Blockchain();
 const wallet = new Wallet();
 const tp = new TransactionPool();
-const p2Server = new p2Server(bc, tp);
-const miner = new Miner(bc, tp, wallet, p2Server);
+const P2Server = new P2Server(bc, tp);
+const miner = new Miner(bc, tp, wallet, P2Server);
 
 app.use(bodyParser.json());
 
@@ -25,7 +25,7 @@ app.post('/mine', (req, res) => {
   const block = bc.addBlock(req.body.data);
   console.log(`New block added: ${block.toString()}`);
 
-  p2Server.syncChains();
+  P2Server.syncChains();
 
   res.redirect('/blocks');
 });
@@ -37,7 +37,7 @@ app.get('/transactions', (req, res) => {
 app.post('/transact', (req, res) => {
   const { recipient, amount } = req.body;
   const transaction = wallet.createTransaction(recipient, amount, bc, tp);
-  p2Server.broadcastTransaction(transaction);
+  P2Server.broadcastTransaction(transaction);
   res.redirect('/transactions');
 });
 
@@ -52,4 +52,4 @@ app.get('/public-key', (req, res) => {
 });
 
 app.listen(HTTP_PORT, () => console.log(`Listening on port ${HTTP_PORT}`));
-p2Server.listen();
+P2Server.listen();
