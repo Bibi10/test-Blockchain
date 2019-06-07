@@ -1,6 +1,6 @@
 //Retrieve transactions and clculate wallet balance
 
-const Transaction = require('./transaction');
+const Transaction = require('../Wallet/transaction');
 
 class TransactionPool {
   constructor() {

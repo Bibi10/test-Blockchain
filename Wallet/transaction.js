@@ -1,12 +1,12 @@
-//Rewarding Transaction
+// Transactions
 
-const { MINING_REWARD } = require('../config');
-const ChainUtil = require('../chain-helpers');
+const { MINING_REWARD } = require('../config'); // Adding Mining reward to Transactions
+const Helper = require('../helper');
 
 
 class Transaction {
   constructor() {
-    this.id = ChainUtil.id();
+    this.id = Helper.id();
     this.input = null;
     this.outputs = [];
   }
@@ -56,15 +56,15 @@ class Transaction {
       timestamp: Date.now(),
       amount: senderWallet.balance,
       address: senderWallet.publicKey,
-      signature: senderWallet.sign(ChainUtil.hash(transaction.outputs))
+      signature: senderWallet.sign(Helper.hash(transaction.outputs))
     }
   }
 
   static verifyTransaction(transaction) {
-    return ChainUtil.verifySignature(
+    return Helper.verifySignature(
       transaction.input.address,
       transaction.input.signature,
-      ChainUtil.hash(transaction.outputs)
+      Helper.hash(transaction.outputs)
     );
   }
 }
