@@ -3,7 +3,6 @@
 const Websocket = require('ws')
 
 const P2_PORT = process.env.P2_PORT || 5010
-const P3_PORT = process.env.P3_PORT || 5011
 
 const peers = process.env.PEERS ? process.env.PEERS.split(',') : [] //peers COnnections
 const MESSAGE_TYPES = {
@@ -20,12 +19,12 @@ class P2Server {
   }
 
   listen() {
-    const server = new Websocket.Server({ port: P2_PORT, P3_PORT })
+    const server = new Websocket.Server({ port: P2_PORT })
     server.on('connection', socket => this.connectToSocket(socket))
 
     this.connectToPeers()
 
-    console.log(`Listeningon POrt: ${P2_PORT} & ${P3_PORT}`)
+    console.log(`Listeningon POrt: ${P2_PORT}`)
   }
 
   connectToPeers() {
