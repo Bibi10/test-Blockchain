@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --watchAll",
-    "dev-test": "nodemon dev-test",
-    "start": "node ./app",
+    "wallet": "nodemon index",
     "dev": "nodemon ./app"
   },
   "repository": {

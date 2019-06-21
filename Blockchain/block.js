@@ -65,3 +65,5 @@ class Block {
 }
 
 module.exports = Block
+
+//La création de blocks ce fait ici

@@ -1,44 +1,49 @@
-const Block = require('./block');
+const Block = require('./block')
 
 class Blockchain {
   constructor() {
-    this.chain  = [Block.genesis()];
+    this.chain = [Block.genesis()]
   }
 
   addBlock(data) {
-    const block = Block.mineBlock(this.chain[this.chain.length-1], data)
-    this.chain.push(block);
+    const block = Block.mineBlock(this.chain[this.chain.length - 1], data)
+    this.chain.push(block)
 
-    return block;
+    return block
   }
 
   isValidChain(chain) {
-    if(JSON.stringify(chain[0]) !== JSON.stringify(Block.genesis())) return false;
+    if (JSON.stringify(chain[0]) !== JSON.stringify(Block.genesis()))
+      return false
 
-    for (let i=1; i < chain.length; i++){
+    for (let i = 1; i < chain.length; i++) {
       const block = chain[i]
-      const lastBlock = chain[i-1];
+      const lastBlock = chain[i - 1]
 
-      if (block.lastHash !== lastBlock.Hash || 
-          block.Hash !== Block.blockHash(block)) {
-        return false;  
+      if (
+        block.lastHash !== lastBlock.Hash ||
+        block.Hash !== Block.blockHash(block)
+      ) {
+        return false
       }
     }
 
-    return true;
+    return true
   }
 
-  replaceChain(newChain){
-    if(newChain.length <= this.chain.length) {
-        console.log('Received chain is no longer than the current chain.');
-      return;
+  replaceChain(newChain) {
+    if (newChain.length <= this.chain.length) {
+      console.log('Received chain is no longer than the current chain.')
+      return
     } else if (!this.isValidChain(newChain)) {
-      console.log('Received chain is not valid.');
-      return;
+      console.log('Received chain is not valid.')
+      return
     }
     console.log('Replacing blockchian with the new chain')
-    this.chain = newChain;
+    this.chain = newChain
   }
 }
 
-module.exports = Blockchain;
+module.exports = Blockchain
+
+//Ici on utilise les blockcs pour pouvoir en faire des chaines selon notre logique
