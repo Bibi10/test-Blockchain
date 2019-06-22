@@ -1,5 +1,7 @@
 const Helper = require('../helper')
 
+//Add Currency name
+
 const { DIFFICULTY, MINE_RATE } = require('../config')
 
 class Block {
