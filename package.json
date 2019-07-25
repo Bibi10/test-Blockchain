@@ -1,0 +1,35 @@
+{
+  "name": "test-blockchain",
+  "version": "1.0.0",
+  "description": "Js Blockchain from Scratch",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --watchAll",
+    "wallet": "nodemon index",
+    "dev": "nodemon ./app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scrudlabs/test-Blockchain.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/scrudlabs/test-Blockchain/issues"
+  },
+  "homepage": "https://github.com/scrudlabs/test-Blockchain#readme",
+  "devDependencies": {
+    "jest": "^24.8.0",
+    "nodemon": "^1.19.1",
+    "ws": "^7.0.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "crypto-js": "^3.1.9-1",
+    "elliptic": "^6.4.1",
+    "express": "^4.17.1",
+    "secp256k1": "^3.7.1",
+    "uuid": "^3.3.2"
+  }
+}
